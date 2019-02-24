@@ -6,7 +6,7 @@ var config = appRequire('config');
 
 module.exports = function (app) {
 
-	app.use('/ttt', express.static(path.join(config.root, 'client', 'dist')));
+	app.use('/avaamo', express.static(path.join(config.root, 'client', 'dist')));
 	
 	app.use('/api', appRequire('api.ttt'));
 

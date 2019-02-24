@@ -13,13 +13,17 @@
           <th class="text-center">#</th>
           <th class="text-center">Word</th>
           <th class="text-center">Count</th>
+          <th class="text-center">Pos</th>
+          <th class="text-center">Syn</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let word of data, let i = index;">
           <td>{{ i+1 }}</td>
-          <td>{{word[0]}}</td>
-          <td>{{word[1]}}</td>
+          <td>{{word.word || 'NA'}}</td>
+          <td>{{word.count || 'NA' }}</td>
+          <td>{{word.pos || 'NA'}}</td>
+          <td>{{word.syn[0] || 'NA'}}</td>
         </tr>
       </tbody>
     </table>

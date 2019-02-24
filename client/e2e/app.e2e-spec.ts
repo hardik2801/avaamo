@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('ttt App', () => {
+describe('Avaamo App', () => {
   let page: AppPage;
 
   beforeEach(() => {

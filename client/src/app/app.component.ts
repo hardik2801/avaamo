@@ -23,8 +23,14 @@ export class AppComponent implements OnInit {
     }
     this.serv.getData(this.count)
       .subscribe(
-        response => this.data = response.data,
-        error => console.log('Error :: ' + error),
+        (response) => {
+          console.log(response, 'resp');
+          return this.data = response.data;
+        },
+        (error) => {
+          alert('Something Went Wrong! Please Try Again.');
+          console.log('Error :: ' + error);
+        },
         () => {
           this.init = false;
           this.loading = false;

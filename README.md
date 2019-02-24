@@ -1,4 +1,4 @@
-# TTT
+# Avaamo
 
 An app that takes a number N and returns the top N frequently occuring words in the file
 
@@ -12,14 +12,14 @@ Angular 5 for front end
 
 1) git clone
 2) npm install
-3) ng-build --base-href '/ttt/'
-3) grunt serve
-4) go to 127.0.0.1:3000/ttt
+3) ng-build --base-href '/avaamo/'
+3) node server/app.js
+4) go to 127.0.0.1:3000/avaamo
 
 ### Prerequisites
 
-You Must have Node Js (tested with 9.8.0) installed
-You Must have Angular-CLI (tested with 1.7.4) installed
+You Must have Node Js installed
+You Must have Angular-CLI installed
 Thats pretty much it, yay thats so minimal
 
 ## Project Components

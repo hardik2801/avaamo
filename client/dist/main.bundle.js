@@ -27,7 +27,7 @@ module.exports = ".manual-input {\n    text-align: center;\n    margin: 10px aut
 /***/ "./client/src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-md-12 manual-input\">\n    View Top\n    <input type=\"number\"  class=\"num-input\" [(ngModel)]=\"count\"> Words\n    <button type=\"button\" class=\"btn btn-primary\" (click)=\"getData()\"> Get'em </button>\n  </div>\n</div>\n<section class=\"content\" *ngIf=\"!init && !loading\">\n  <div class=\"col-md-12 manual-input\">\n    <table class=\"table table-striped\">\n      <thead>\n        <tr>\n          <th class=\"text-center\">#</th>\n          <th class=\"text-center\">Word</th>\n          <th class=\"text-center\">Count</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let word of data, let i = index;\">\n          <td>{{ i+1 }}</td>\n          <td>{{word[0]}}</td>\n          <td>{{word[1]}}</td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n</section>\n<div class=\"loading\" *ngIf=\"loading\"></div>"
+module.exports = "<div class=\"row\">\n  <div class=\"col-md-12 manual-input\">\n    View Top\n    <input type=\"number\"  class=\"num-input\" [(ngModel)]=\"count\"> Words\n    <button type=\"button\" class=\"btn btn-primary\" (click)=\"getData()\"> Get'em </button>\n  </div>\n</div>\n<section class=\"content\" *ngIf=\"!init && !loading\">\n  <div class=\"col-md-12 manual-input\">\n    <table class=\"table table-striped\">\n      <thead>\n        <tr>\n          <th class=\"text-center\">#</th>\n          <th class=\"text-center\">Word</th>\n          <th class=\"text-center\">Count</th>\n          <th class=\"text-center\">Pos</th>\n          <th class=\"text-center\">Syn</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let word of data, let i = index;\">\n          <td>{{ i+1 }}</td>\n          <td>{{word.word || 'NA'}}</td>\n          <td>{{word.count || 'NA' }}</td>\n          <td>{{word.pos || 'NA'}}</td>\n          <td>{{word.syn[0] || 'NA'}}</td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n</section>\n<div class=\"loading\" *ngIf=\"loading\"></div>"
 
 /***/ }),
 
@@ -62,7 +62,13 @@ var AppComponent = /** @class */ (function () {
             return;
         }
         this.serv.getData(this.count)
-            .subscribe(function (response) { return _this.data = response.data; }, function (error) { return console.log('Error :: ' + error); }, function () {
+            .subscribe(function (response) {
+            console.log(response, 'resp');
+            return _this.data = response.data;
+        }, function (error) {
+            alert('Something Went Wrong! Please Try Again.');
+            console.log('Error :: ' + error);
+        }, function () {
             _this.init = false;
             _this.loading = false;
         });
