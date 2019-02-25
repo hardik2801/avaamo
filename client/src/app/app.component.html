@@ -2,7 +2,7 @@
   <div class="col-md-12 manual-input">
     View Top
     <input type="number"  class="num-input" [(ngModel)]="count"> Words
-    <button type="button" class="btn btn-primary" (click)="getData()"> Get'em </button>
+    <button type="button" class="btn btn-primary" [disabled]="loading" (click)="getData()"> Get'em </button>
   </div>
 </div>
 <section class="content" *ngIf="!init && !loading">
